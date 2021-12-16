@@ -2,14 +2,16 @@
   <div>
     <div class="movies">
       <div class="movie-card" v-for="movie in movies" :key="movie.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
-          class="movie__img"
-          alt=""
-        />
-        <p class="movie__info">
-          {{ movie.name }} <span>({{ movie.first_air_date }})</span>
-        </p>
+        <router-link :to="{ name: 'tv', params: { id: movie.id } }">
+          <img
+            :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+            class="movie__img"
+            alt=""
+          />
+          <p class="movie__info">
+            {{ movie.name }} <span>({{ movie.first_air_date }})</span>
+          </p>
+        </router-link>
       </div>
     </div>
     <button @click="loadPage">Next</button>

@@ -11,12 +11,12 @@ export default new Vuex.Store({
   },
   mutations: {
     increase(state) {
-      state.count = state.count + 5
+      state.count = state.count + 5;
     },
 
     increment(state, payload) {
-      state.count = state.count + payload.value
-    }
+      state.count = state.count + payload.value;
+    },
   },
   actions: {},
   modules: {},

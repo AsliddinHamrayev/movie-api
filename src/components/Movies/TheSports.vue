@@ -2,14 +2,16 @@
   <div>
     <div class="movies">
       <div class="movie-card" v-for="music in musics" :key="music.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w500/${music.poster_path}`"
-          class="movie__img"
-          alt=""
-        />
-        <p class="movie__info">
-          {{ music.title }} <span>({{ music.release_date }})</span>
-        </p>
+        <router-link :to="{ name: 'movie', params: { id: music.id } }">
+          <img
+            :src="`https://image.tmdb.org/t/p/w500/${music.poster_path}`"
+            class="movie__img"
+            alt=""
+          />
+          <p class="movie__info">
+            {{ music.title }} <span>({{ music.release_date }})</span>
+          </p>
+        </router-link>
       </div>
     </div>
     <button @click="loadPage">Next</button>

@@ -43,19 +43,19 @@ export default {
     },
 
     Addfive() {
-      this.$store.commit('increase');
+      this.$store.commit("increase");
     },
 
     AddTen() {
-      this.$store.commit('increment', {value: 10})
-    }
+      this.$store.commit("increment", { value: 10 });
+    },
   },
 
   computed: {
     counter() {
-      return this.$store.state.count
-    }
-  }
+      return this.$store.state.count;
+    },
+  },
 };
 </script>
 

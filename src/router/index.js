@@ -39,6 +39,13 @@ const routes = [
       return import("../views/SingleMovie.vue");
     },
   },
+  {
+    path: "/tv/:id",
+    name: "tv",
+    component: function () {
+      return import("../views/SingleTv.vue");
+    },
+  },
 ];
 
 const router = new VueRouter({

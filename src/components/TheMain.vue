@@ -1,18 +1,20 @@
 <template>
   <main>
     <div class="main-card">
-      <img
-        :src="`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`"
-        class="main__bg"
-        alt=""
-      />
-      <div class="info">
-        <img src="../assets/Icon.png" alt="" class="play__img" />
-        <div class="text-box">
-          <h1 class="text-top">Continue Watching</h1>
-          <h1 class="text-bottom">{{ movie.name }}</h1>
+      <router-link :to="{ name: 'tv', params: { id: movie.id } }">
+        <img
+          :src="`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`"
+          class="main__bg"
+          alt=""
+        />
+        <div class="info">
+          <img src="../assets/Icon.png" alt="" class="play__img" />
+          <div class="text-box">
+            <h1 class="text-top">Continue Watching</h1>
+            <h1 class="text-bottom">{{ movie.name }}</h1>
+          </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </main>
 </template>
