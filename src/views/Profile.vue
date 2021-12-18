@@ -3,7 +3,7 @@
     <h1 class="text" :class="{ animate: animatedText }">Asliddin Hamrayev</h1>
     <button @click="animate()">Animate</button>
 
-    <transition name="text">
+    <transition name="para">
       <h1 class="text" v-if="paraIsVisible">Visible Paragraph</h1>
     </transition>
     <button
@@ -17,6 +17,11 @@
     <button @click="Addone">+1</button>
     <button @click="Addfive">+5</button>
     <button @click="AddTen">+10</button>
+
+    <transition name="user">
+      <button class="show" @click="ShowUser" v-if="!userVisible">Show</button>
+      <button class="show" @click="HideUser" v-else>Hide</button>
+    </transition>
   </div>
 </template>
 
@@ -26,6 +31,7 @@ export default {
     return {
       animatedText: false,
       paraIsVisible: false,
+      userVisible: false,
     };
   },
 
@@ -49,6 +55,13 @@ export default {
     AddTen() {
       this.$store.commit("increment", { value: 10 });
     },
+
+    ShowUser() {
+      this.userVisible = true;
+    },
+    HideUser() {
+      this.userVisible = false;
+    },
   },
 
   computed: {
@@ -65,44 +78,61 @@ export default {
   font-size: 8px;
 }
 
-.text {
-  /* transition: all .3s ease-out; */
-}
-
 .animate {
-  /* transform: translateX(-100px); */
   animation: slide 0.3s ease-out forwards;
 }
 
-.text-enter-from {
-  opacity: 0;
-  transform: translateY(-30px);
+.para-enter-active {
+  animation: slide 0.8s ease-out forwards;
 }
 
-.text-enter-active {
-  transition: slide 0.3s ease-out;
+.para-leave-active {
+  animation: slide 0.8s ease-in reverse;
 }
 
-.text-enter-to {
-  opacity: 1;
-  transform: translateY(0);
+.user-enter-active {
+  animation: button 5s ease-out;
+}
+
+.user-leave-active {
+  animation: button 5s ease-in reverse;
+}
+
+.show {
+  width: 100px;
+  height: 24px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 button {
   margin-left: 10px;
 }
 
-@keyframes slide {
+@keyframes button {
   0% {
-    transform: translateX(0) scale(1);
-  }
-
-  50% {
-    transform: translateX(-50px) scale(1.5);
+    opacity: 0;
+    transform: translateX(-30px);
   }
 
   100% {
-    transform: translateX(-100px) scale(1);
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-50px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-0) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
   }
 }
 </style>

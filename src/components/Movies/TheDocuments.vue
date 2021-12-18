@@ -6,16 +6,17 @@
         v-for="documentary in documentary"
         :key="documentary.id"
       >
-      <router-link :to="{ name: 'movie', params: { id: documentary.id } }">
+        <router-link :to="{ name: 'movie', params: { id: documentary.id } }">
           <img
             :src="`https://image.tmdb.org/t/p/w500/${documentary.poster_path}`"
             class="movie__img"
             alt=""
           />
           <p class="movie__info">
-            {{ documentary.title }} <span>({{ documentary.release_date }})</span>
+            {{ documentary.title }}
+            <span>({{ documentary.release_date }})</span>
           </p>
-      </router-link>
+        </router-link>
       </div>
     </div>
     <button @click="loadPage">Next</button>

@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -33,5 +37,25 @@
 
 #app::-webkit-scrollbar-thumb {
   background: #333;
+}
+
+.route-enter-active {
+  animation: route 5s ease-out;
+}
+
+.route-leave-active {
+  animation: route 5s ease-in;
+}
+
+@keyframes route {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>
