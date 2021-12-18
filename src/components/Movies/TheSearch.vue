@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="movies">
-        <slot></slot>
+      <slot></slot>
       <div class="movie-card" v-for="movie in movies" :key="movie.id">
         <router-link :to="{ name: 'movie', params: { id: movie.id } }">
           <img

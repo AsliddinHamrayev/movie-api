@@ -132,8 +132,8 @@ export default {
   },
 
   methods: {
-    GetMovie() {
-      let movieId = this.$route.params.id;
+    GetMovie(route) {
+      let movieId = route.params.id;
 
       fetch(
         `
@@ -151,8 +151,14 @@ https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apikey}&language=en
     },
   },
 
+  watch: {
+    $route(newRoute) {
+      this.GetMovie(newRoute);
+    },
+  },
+
   mounted() {
-    this.GetMovie();
+    this.GetMovie(this.$route);
   },
 };
 </script>
